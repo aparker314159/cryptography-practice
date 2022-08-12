@@ -39,9 +39,11 @@ uint8_t LinearFSR32::genByte() {
 }
 
 void LinearFSR32::doShift() {
-    uint32_t tapped_bit = bit_parity(registers & taps);
-
-    registers = (tapped_bit << 31) | (registers >> 1);
+    if (registers & 1) {
+        registers = (registers >> 1) ^ taps;
+    } else {
+        registers >>= 1;
+    }
 }
 
 
