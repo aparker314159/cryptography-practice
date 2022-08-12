@@ -10,6 +10,7 @@ set (CMAKE_CXX_STANDARD 20)
 add_executable(crypto_practice
     src/pseudorandom/lfsr.cpp
     src/pseudorandom/prng.cpp
+    src/pseudorandom/blumblumshub.cpp
 
     tests/tests.cpp
 )

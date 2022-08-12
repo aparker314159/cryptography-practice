@@ -6,6 +6,18 @@ PseudoRNG::PseudoRNG() {}
 
 PseudoRNG::~PseudoRNG() {}
 
+uint8_t PseudoRNG::genByte() {
+    // By default, generate 8 bits and form them into a byte.
+    uint8_t byte = 0;
+
+    for (int i = 0; i < 8; i++) {
+        byte |= genBit();
+        byte <<= 1;
+    }
+
+    return byte;
+}
+
 uint32_t PseudoRNG::genWord() {
 
     // generate a byte 4 times, casting each to a 32 bit int
@@ -23,14 +35,6 @@ uint64_t PseudoRNG::genDword() {
     uint64_t word2 = genWord();
 
     return (word1 << 32) | word2;
-}
-
-uint8_t PseudoRNG::genBit() {
-
-    // By default, generate a byte and take the lowest bit
-    uint8_t byte = genByte();
-
-    return byte & 1U;
 }
 
 std::vector<uint8_t> PseudoRNG::genBlock(size_t size_bytes) {

@@ -12,7 +12,7 @@
 
 
 // Returns 1 for odd parity, 0 for even
-inline uint32_t bit_parity(uint32_t n) {
+inline uint8_t bit_parity(uint32_t n) {
     uint32_t y;
 
     y = n ^ (n>>1);
@@ -21,6 +21,20 @@ inline uint32_t bit_parity(uint32_t n) {
     y = y ^ (y >> 4);
     y = y ^ (y >> 8);
     y = y ^ (y >> 16);
+
+    return y & 1U;
+}
+
+inline uint8_t bit_parity(uint64_t n) {
+    uint64_t y;
+
+    y = n ^ (n>>1);
+
+    y = y ^ (y >> 2);
+    y = y ^ (y >> 4);
+    y = y ^ (y >> 8);
+    y = y ^ (y >> 16);
+    y = y ^ (y >> 32);
 
     return y & 1U;
 }
