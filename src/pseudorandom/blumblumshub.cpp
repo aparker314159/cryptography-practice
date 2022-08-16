@@ -31,6 +31,8 @@ BlumBlumShub::BlumBlumShub(uint64_t seed, uint64_t p_, uint64_t q_):
     if (seed <= 1) {
         std::cerr << "Seed is 0 or 1 in BBS! Random numbers will not occur." << std::endl;
     }
+
+    p_times_q = p * q;
 }
 
 
