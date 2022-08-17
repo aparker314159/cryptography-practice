@@ -12,6 +12,8 @@ add_executable(crypto_practice
     src/pseudorandom/prng.cpp
     src/pseudorandom/blumblumshub.cpp
 
+    src/stream/trivium.cpp
+
     tests/tests.cpp
 )
 
